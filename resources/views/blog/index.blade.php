@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<div class="mt-5">
+<div class="mt-3">
   <div class="row">
     <div class="col-md-12">
       <p class="quote">The Beautiful Laravel</p>
