@@ -6,10 +6,8 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-        <a class="nav-link" href="{{ route('blog.index') }}">Blog</a>
-      </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('other.about') }}">About</a>
+        <a class="nav-link" href="{{ route('admin.index') }}">Posts</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
