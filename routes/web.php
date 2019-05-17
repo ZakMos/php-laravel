@@ -23,22 +23,27 @@ Route::get('about', function () {
   return view('other.about');
 })->name('other.about');
 
-Route::get('admin', function () {
-  return view('admin.index');
-})->name('admin.index');
 
-Route::get('admin/create', function () {
-  return view('admin.create');
-})->name('admin.create');
+Route::group(['prefix' => 'admin'], function(){
 
-Route::post('admin/create', function() {
-  return "It works!";
-})->name('admin.create');
+  Route::get('', function () {
+    return view('admin.index');
+  })->name('admin.index');
 
-Route::get('admin/edit/{id}', function () {
-  return view('admin.edit');
-})->name('admin.edit');
+  Route::get('create', function () {
+    return view('admin.create');
+  })->name('admin.create');
 
-Route::post('admin/edit', function() {
-  return "It works!";
-})->name('admin.update');
+  Route::post('create', function() {
+    return "It works!";
+  })->name('admin.create');
+
+  Route::get('edit/{id}', function () {
+    return view('admin.edit');
+  })->name('admin.edit');
+
+  Route::post('edit', function() {
+    return "It works!";
+  })->name('admin.update');
+
+});
