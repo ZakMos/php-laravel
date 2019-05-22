@@ -2,19 +2,7 @@
 
 @section('content')
 <div class="mt-3">
-  @if(count($errors->all()))
-  <div class="crow">
-    <div class="col-md-12">
-      <div class="alert alert-danger">
-        <ul>
-          @foreach ($errors->all() as $error)
-          <li>{{ $error }}</li>
-          @endforeach
-        </ul>
-      </div>
-    </div>
-  </div>
-  @endif
+  @include('partials.errors')
   <div class="row">
     <div class="col-md-12">
       <form class="" action=" {{ route('admin.create')}}" method="post">
