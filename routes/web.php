@@ -46,7 +46,9 @@ Route::group(['prefix' => 'admin'], function(){
   })->name('admin.create');
 
   Route::post('create', function(\Illuminate\Http\Request $request) {
-    return "It works!";
+    return redirect()
+    ->route('admin.index')
+    ->with('info', 'Post created, Title: ' . $request->input('title'));
   })->name('admin.create');
 
   Route::get('edit/{id}', function ($id) {
@@ -67,7 +69,9 @@ Route::group(['prefix' => 'admin'], function(){
 
 
   Route::post('edit', function(\Illuminate\Http\Request $request) {
-    return "It works!";
+    return redirect()
+    ->route('admin.index')
+    ->with('info', 'Post edited, new Title: ' . $request->input('title'));
   })->name('admin.update');
 
 });
