@@ -3,7 +3,7 @@
 @section('content')
   <div class="row">
     <div class="col-md-12">
-      <form class="" action="" {{ route('admin.update')}}"" method="post">
+      <form class="" action="{{ route('admin.update') }}" method="post">
         <div class="form-group">
           <label for="title">Title</label>
           <input
@@ -22,6 +22,7 @@
               name="content"
               value="{{ $post['content'] }}">
         </div>
+        {{ csrf_field() }}
         <button type="submit" class="btn btn-primary" name="button">Submit</button>
       </form>
     </div>

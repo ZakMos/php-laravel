@@ -12,6 +12,7 @@
           <label for="content">Title</label>
           <input type="text" class="form-control" id="content" name="content" value="">
         </div>
+        {{ csrf_field() }}
         <button type="submit" class="btn btn-primary" name="button">Submit</button>
       </form>
     </div>
