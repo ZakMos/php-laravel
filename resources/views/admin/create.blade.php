@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
+<div class="mt-3">
+  @include('partials.errors')
   <div class="row">
     <div class="col-md-12">
       <form class="" action=" {{ route('admin.create')}}" method="post">
@@ -9,12 +11,14 @@
           <input type="text" class="form-control" id="title" name="title" value="">
         </div>
         <div class="form-group">
-          <label for="content">Title</label>
+          <label for="content">Content</label>
           <input type="text" class="form-control" id="content" name="content" value="">
         </div>
+        {{ csrf_field() }}
         <button type="submit" class="btn btn-primary" name="button">Submit</button>
       </form>
     </div>
   </div>
+</div>
 
 @endsection
