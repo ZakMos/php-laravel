@@ -38,7 +38,6 @@ class PostController extends Controller
         $post = Post::find($id);
         return view('admin.edit', ['post' => $post, 'postId' => $id]);
     }
-
     public function PostAdminCreate(Request $request)
     {
         $this->validate($request, [
@@ -64,6 +63,12 @@ class PostController extends Controller
         $post->content = $request->input('content');
         $post->save();
         return redirect()->route('admin.index')->with('info', 'Post edited, new Title is: ' . $request->input('title'));
+    }
+    public function getAdminDelete($id)
+    {
+        $post = Post::find($id);
+        $post->delete();
+        return redirect()-> route('admin.index')->with('info', 'Post deleted!');
     }
 
 }
