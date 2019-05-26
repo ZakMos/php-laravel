@@ -5,26 +5,23 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use Illuminate\Session\Store;
-
 class PostController extends Controller
 {
     public function getIndex()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('created_at', 'desc')->get();
         return view('blog.index', ['posts' => $posts]);
     }
 
     public function getAdminIndex()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('title', 'asc')->get();
         return view('admin.index', ['posts' => $posts]);
     }
 
     public function getPost($id)
     {
-        $post = Post::find($id);
+        $post = Post::where('id', $id)->first();
         return view('blog.post', ['post' => $post]);
     }
 
@@ -52,7 +49,7 @@ class PostController extends Controller
         return redirect()-> route('admin.index')->with('info', 'Post created, Title is: ' . $request->input('title'));
     }
 
-    public function postAdminUpdate(Store $session, Request $request)
+    public function postAdminUpdate(Request $request)
     {
         $this->validate($request, [
           'title'   =>  'required|min:5',
