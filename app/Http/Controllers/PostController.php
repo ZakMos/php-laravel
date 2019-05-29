@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+
     public function getIndex()
     {
         $posts = Post::orderBy('created_at', 'desc')->get();
@@ -21,8 +22,16 @@ class PostController extends Controller
 
     public function getPost($id)
     {
-        $post = Post::where('id', $id)->first();
+        $post = Post::where('id', $id)->with('likes')->first();
         return view('blog.post', ['post' => $post]);
+    }
+
+    public function getLikePost($id)
+    {
+      $post = Post::where('id', $id)->first();
+      $like = new Like();
+      $post->likes()->save($like);
+      return redirect()->back();
     }
 
     public function getAdminCreate()
@@ -64,6 +73,7 @@ class PostController extends Controller
     public function getAdminDelete($id)
     {
         $post = Post::find($id);
+        $post->likes()->delete();
         $post->delete();
         return redirect()-> route('admin.index')->with('info', 'Post deleted!');
     }
