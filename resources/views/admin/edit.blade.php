@@ -23,6 +23,13 @@
               name="content"
               value="{{ $post->content }}">
         </div>
+        @foreach($tags as $tag)
+        <div class="checkbox">
+          <label for="">
+            <input type="checkbox" name="tags[]" value="{{ $tag->id }}" {{ $post->tags->contains($tag->id) ? 'checked' : '' }}> {{ $tag->name }}
+          </label>
+        </div>
+        @endforeach
         {{ csrf_field() }}
         <input
           type="hidden"
