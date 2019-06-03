@@ -26,7 +26,10 @@
         @foreach($tags as $tag)
         <div class="checkbox">
           <label for="">
-            <input type="checkbox" name="tags[]" value="{{ $tag->id }}" {{ $post->tags->contains($tag->id) ? 'checked' : '' }}> {{ $tag->name }}
+            <input
+            type="checkbox"
+            name="tags[]"
+            value="{{ $tag->id }}" {{ $post->tags->contains($tag->id) ? 'checked' : '' }}> {{ $tag->name }}
           </label>
         </div>
         @endforeach
