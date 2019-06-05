@@ -11,10 +11,32 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ route('other.about') }}">About</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/login') }}">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/register') }}">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.index') }}">Posts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('logout') }}"
+          onclick="event.preventDefault();
+          document.getElementById('logout-form').submit();">
+          Logout
+        </a>
+        <form class="" id="logout-form" action="{{ url('/logout') }}" method="POST">
+          {{ csrf_field() }}
+        </form>
+      </li>
+
+
+
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+    <!-- <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    </form> -->
   </div>
 </nav>
