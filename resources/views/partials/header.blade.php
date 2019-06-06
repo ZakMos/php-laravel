@@ -11,12 +11,14 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ route('other.about') }}">About</a>
       </li>
+      @if(!Auth::check())
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/login') }}">Login</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/register') }}">Register</a>
       </li>
+      @else
       <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.index') }}">Posts</a>
       </li>
@@ -30,7 +32,7 @@
           {{ csrf_field() }}
         </form>
       </li>
-
+      @endif
 
 
     </ul>
