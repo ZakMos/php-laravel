@@ -20,7 +20,7 @@ Route::get('post/{id}', [
 ]);
 
 Route::get('post/{id}/like', [
-    'uses' => 'PostController@getPost',
+    'uses' => 'PostController@getLikePost',
     'as' => 'blog.post.like'
 ]);
 
@@ -28,7 +28,7 @@ Route::get('about', function () {
     return view('other.about');
 })->name('other.about');
 
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
     Route::get('', [
         'uses' => 'PostController@getAdminIndex',
         'as' => 'admin.index'
