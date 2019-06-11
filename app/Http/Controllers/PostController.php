@@ -35,10 +35,10 @@ class PostController extends Controller
 
     public function getLikePost($id)
     {
-      $post = Post::where('id', $id)->first();
-      $like = new Like();
-      $post->likes()->save($like);
-      return redirect()->back();
+        $post = Post::where('id', $id)->first();
+        $like = new Like();
+        $post->likes()->save($like);
+        return redirect()->back();
     }
 
     public function getAdminCreate()

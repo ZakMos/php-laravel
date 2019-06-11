@@ -20,7 +20,7 @@ Route::get('post/{id}', [
 ]);
 
 Route::get('post/{id}/like', [
-    'uses' => 'PostController@getPost',
+    'uses' => 'PostController@getLikePost',
     'as' => 'blog.post.like'
 ]);
 
